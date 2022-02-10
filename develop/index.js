@@ -55,8 +55,8 @@ inquirer
   .prompt([
     {
       type: 'input',
-      name: 'name',
-      message: 'What is your name?',
+      name: 'project name',
+      message: 'What is your project name?',
     },
     {
       type: 'input',
