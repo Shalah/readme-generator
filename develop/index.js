@@ -18,7 +18,7 @@ const { features } = require('process');
 
 
 
-const generateHTML = ({ projectTitle, description, installation, usage, license, features, Contributions }) =>
+const generateReadme = ({ projectTitle, description, installation, usage, license, features, Contributions }) =>
   `# ${projectTitle}
 
   ## ${description}
@@ -84,10 +84,10 @@ inquirer
       message: 'Enter your LinkedIn URL.',
     },
   ])
-  .then((answers) => {
-    const htmlPageContent = generateHTML(answers);
+  .then((projectTitle, description, installation, usage, license, features, Contributions) => {
+    const readmeContent = generateReadme(projectTitle, description, installation, usage, license, features, Contributions);
 
-    fs.writeFile('index.html', htmlPageContent, (err) =>
-      err ? console.log(err) : console.log('Successfully created index.html!')
+    fs.writeFile('README.md', readmeContent, (err) =>
+      err ? console.log(err) : console.log('Successfully created README file!')
     );
   });
