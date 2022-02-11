@@ -1,7 +1,7 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
-const { features } = require('process');
+
 
 // TODO: Create an array of questions for user input
  
@@ -18,33 +18,46 @@ const { features } = require('process');
 
 
 
-const generateReadme = ({ projectTitle, description, installation, usage, license, features, Contributions }) =>
+const generateReadme = ({ projectTitle, description, installation, usage, license, features, contributions, tests, email, github }) =>
+
+
   `# ${projectTitle}
 
-  ## ${description}
+  ## Description
+  ${description}
     
   
-  ## Table of Contents (Optional)
-    - [Installation](#installation)
-    - [Usage](#usage)
-    - [Credits](#credits)
-    - [License](#license)
+## Table of Contents 
+- [Installation](##Installation)
+- [Usage](##Usage)
+- [Features](##features)
+- [Contributions](##contributions)
+- [License](##license)
+- [tests](##tests)
+- [Questions](##Questions) 
   
   
-  ## ${installation}
+## Installation
+  ${installation} 
   
   
-  ## ${usage}
+## Usage
+  ${usage}
   
-  
-  ## ${license}
-  
-  
-  ## ${features}
-  
-  
-  ## ${Contributions}
-  
+## Features
+  ${features}
+
+## Contributions
+  ${contributions}
+
+## License
+  This project is licensed under the ${license} license.
+
+## tests
+  ${tests}
+
+## questions 
+  If you have any questions, contact me at ${email}. You can find more info of my work at ${github}
   
 `;
 
@@ -55,39 +68,64 @@ inquirer
   .prompt([
     {
       type: 'input',
-      name: 'project name',
+      name: 'projectTitle',
       message: 'What is your project name?',
     },
     {
       type: 'input',
-      name: 'location',
-      message: 'Where are you from?',
+      name: 'description',
+      message: 'Can you describe your project in few sentences?',
     },
     {
       type: 'input',
-      name: 'hobby',
-      message: 'What is your favorite hobby?',
+      name: 'installation',
+      message: 'How can your project be installed by users?',
+    },
+    {
+        type: 'input',
+        name: 'usage',
+        message: 'How can your project be used by users?', 
     },
     {
       type: 'input',
-      name: 'food',
-      message: 'What is your favorite food?',
+      name: 'features',
+      message: 'What features does your application have?',
+    },
+    {
+        type: 'input',
+        name: 'contributions',
+        message: 'Who contributed to this application',
+    },
+    {
+        type: 'list',
+        name: 'license',
+        choices: [ 'MIT', 'Apache 2.0', 'GPL 3.0' ],
     },
     {
       type: 'input',
-      name: 'github',
-      message: 'Enter your GitHub Username',
+      name: 'tests',
+      message: 'Enter your tests',
     },
     {
       type: 'input',
       name: 'linkedin',
-      message: 'Enter your LinkedIn URL.',
+      message: 'Enter your LinkedIn URL?',
+    },
+    {
+        type: 'input',
+        name: 'github',
+        message: 'Enter your GitHub',
+    },
+    {
+        type: 'input',
+        name: 'email',
+        message: 'Enter your Email',
     },
   ])
-  .then((projectTitle, description, installation, usage, license, features, Contributions) => {
-    const readmeContent = generateReadme(projectTitle, description, installation, usage, license, features, Contributions);
+  .then((projectTitle, description, installation, usage, license, features, contributions, tests, github, email) => {
+    const readmeContent = generateReadme(projectTitle, description, installation, usage, license, features, contributions, tests, github, email);
 
-    fs.writeFile('README.md', readmeContent, (err) =>
+    fs.appendFile('README.md', readmeContent, (err) =>
       err ? console.log(err) : console.log('Successfully created README file!')
     );
   });
