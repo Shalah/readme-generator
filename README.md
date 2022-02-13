@@ -13,6 +13,3 @@ To be able to use the application, a user must install inquirer and run the comm
 ## Developer
 - Rim Zoungrana
 - github.com/Shalah
-
-
-
