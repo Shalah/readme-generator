@@ -20,8 +20,11 @@ const fs = require('fs');
 
 const generateReadme = ({ projectTitle, description, installation, usage, license, features, contributions, tests, email, github }) =>
 
+  
 
   `# ${projectTitle}
+
+  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
   ## Description
   ${description}
