@@ -4,6 +4,10 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+## Screenshot
+
+![readmeimage](develop/image/readme-generator.png)
+
 ## Description
 This is a readme generator. It generates a README file by asking the user the type of information they want to include in the file. 
 
